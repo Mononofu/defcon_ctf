@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IDA - C:\Users\mononofu\Downloads\blackjack.idb (blackjack)</title>
+</head>
+<body bgcolor="white">
+<span style="white-space: pre; font-family: FixedSys; color: blue; background: white">
+
+<span style="color:gray">int __cdecl PlayBlackjack(int socket)
+</span><span style="color:navy">{
+</span><span style="background:#eeffff">  <span style="color:gray">char bp0</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">bp@0                                                           </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int *v2</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@2                                                           </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int v3</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">ebx@2                                                     </span></span>
+<span style="background:#eeffff">  <span style="color:gray">unsigned int v4</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">ecx@4                                                   </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v5</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@6                                                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">_BYTE *v6</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@10                                                        </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int v7</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">edx@10                                                    </span></span>
+<span style="background:#eeffff">  <span style="color:gray">unsigned int v8</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">ebx@14                                                  </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v9</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@16                                                           </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v10</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@47                                                          </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v11</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@53                                                          </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v12</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@58                                                          </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v13</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@60                                                          </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int tmp2</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@62                                                         </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int tmp</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@69                                                          </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int result</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@74                                                       </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int bet</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+14h] [bp-B4h]@20                                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int dealer_hand_val</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+18h] [bp-B0h]@31                         </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int player_hand_val</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+1Ch] [bp-ACh]@31                         </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int num_player_cards</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+20h] [bp-A8h]@31                        </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int num_dealer_cards</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+24h] [bp-A4h]@37                        </span></span>
+<span style="background:#eeffff">  <span style="color:gray">char hit_stand_decision</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+2Eh] [bp-9Ah]@20                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int dealer_hand</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+92h] [bp-36h]@2                                     </span></span>
+<span style="background:#eeffff">  <span style="color:gray">_BYTE player_hand[21]</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+A7h] [bp-21h]@10                              </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v25</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+BCh] [bp-Ch]@1                                              </span></span>
+
+  <span style="color:#8080ff">v25 </span><span style="color:navy">= *</span>MK_FP<span style="color:navy">(</span>__GS__<span style="color:navy">, 20);
+  while ( 1 )
+  {
+    </span><span style="color:#8080ff">v2 </span><span style="color:navy">= &amp;</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">;
+    </span><span style="color:#8080ff">v3 </span><span style="color:navy">= 21;
+    if ( (</span><span style="color:#8080ff">bp0 </span><span style="color:navy">- 54) &amp; 2 )
+    {
+      </span>LOWORD<span style="color:navy">(</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">) = 0;
+      </span><span style="color:#8080ff">v2 </span><span style="color:navy">= (</span><span style="color:gray">int *</span><span style="color:navy">)((</span><span style="color:gray">char *</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">dealer_hand </span><span style="color:navy">+ 2);
+      </span><span style="color:#8080ff">v3 </span><span style="color:navy">= 19;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    </span><span style="color:#8080ff">v4 </span><span style="color:navy">= 0;
+    do
+    {
+      *(</span><span style="color:gray">int *</span><span style="color:navy">)((</span><span style="color:gray">char *</span><span style="color:navy">)</span><span style="color:#8080ff">v2 </span><span style="color:navy">+ </span><span style="color:#8080ff">v4</span><span style="color:navy">) = 0;
+      </span><span style="color:#8080ff">v4 </span><span style="color:navy">+= 4;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    while ( </span><span style="color:#8080ff">v4 &lt; </span><span style="color:navy">(</span><span style="color:#8080ff">v3 &amp; </span><span style="color:navy">0xFFFFFFFCu) );
+    </span><span style="color:#8080ff">v5 </span><span style="color:navy">= (</span><span style="color:gray">int</span><span style="color:navy">)((</span><span style="color:gray">char *</span><span style="color:navy">)</span><span style="color:#8080ff">v2 </span><span style="color:navy">+ </span><span style="color:#8080ff">v4</span><span style="color:navy">);
+    if ( </span><span style="color:#8080ff">v3 &amp; </span><span style="color:navy">2 )
+    {
+      *(</span><span style="color:gray">_WORD *</span><span style="color:navy">)</span><span style="color:#8080ff">v5 </span><span style="color:navy">= 0;
+      </span><span style="color:#8080ff">v5 </span><span style="color:navy">+= 2;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    if ( </span><span style="color:#8080ff">v3 &amp; </span><span style="color:navy">1 )
+      *(</span><span style="color:gray">_BYTE *</span><span style="color:navy">)</span><span style="color:#8080ff">v5 </span><span style="color:navy">= 0;
+    </span><span style="color:#8080ff">v6 </span><span style="color:navy">= </span><span style="color:#8080ff">player_hand</span><span style="color:navy">;
+    </span><span style="color:#8080ff">v7 </span><span style="color:navy">= 21;
+    if ( (</span><span style="color:#8080ff">bp0 </span><span style="color:navy">- 33) &amp; 1 )
+    {
+      </span><span style="color:#8080ff">player_hand</span><span style="color:navy">[0] = 0;
+      </span><span style="color:#8080ff">v6 </span><span style="color:navy">= &amp;</span><span style="color:#8080ff">player_hand</span><span style="color:navy">[1];
+      </span><span style="color:#8080ff">v7 </span><span style="color:navy">= 20;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    if ( (</span><span style="color:gray">_BYTE</span><span style="color:navy">)</span><span style="color:#8080ff">v6 &amp; </span><span style="color:navy">2 )
+    {
+      *(</span><span style="color:gray">_WORD *</span><span style="color:navy">)</span><span style="color:#8080ff">v6 </span><span style="color:navy">= 0;
+      </span><span style="color:#8080ff">v6 </span><span style="color:navy">+= 2;
+      </span><span style="color:#8080ff">v7 </span><span style="color:navy">-= 2;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    </span><span style="color:#8080ff">v8 </span><span style="color:navy">= 0;
+    do
+    {
+      *(</span><span style="color:gray">_DWORD *</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">v6</span><span style="color:navy">[</span><span style="color:#8080ff">v8</span><span style="color:navy">] = 0;
+      </span><span style="color:#8080ff">v8 </span><span style="color:navy">+= 4;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    while ( </span><span style="color:#8080ff">v8 &lt; </span><span style="color:navy">(</span><span style="color:#8080ff">v7 &amp; </span><span style="color:navy">0xFFFFFFFCu) );
+    </span><span style="color:#8080ff">v9 </span><span style="color:navy">= (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">v6</span><span style="color:navy">[</span><span style="color:#8080ff">v8</span><span style="color:navy">];
+    if ( </span><span style="color:#8080ff">v7 &amp; </span><span style="color:navy">2 )
+    {
+      *(</span><span style="color:gray">_WORD *</span><span style="color:navy">)</span><span style="color:#8080ff">v9 </span><span style="color:navy">= 0;
+      </span><span style="color:#8080ff">v9 </span><span style="color:navy">+= 2;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    if ( </span><span style="color:#8080ff">v7 &amp; </span><span style="color:navy">1 )
+      *(</span><span style="color:gray">_BYTE *</span><span style="color:navy">)</span><span style="color:#8080ff">v9 </span><span style="color:navy">= 0;
+    </span>snprintf<span style="color:navy">(&amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">, 0x63u, &quot;</span><span style="color:green">You have $%d\n&quot;</span><span style="color:navy">, </span>cash<span style="color:navy">);
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">);
+    </span><span style="color:#8080ff">bet </span><span style="color:navy">= -1;
+    while ( </span><span style="color:#8080ff">bet &lt; </span><span style="color:navy">0 || </span><span style="color:#8080ff">bet &gt; </span>MAX_BET <span style="color:navy">)
+    {
+      </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">How much would you like to bet (-1 to exit)? &quot;</span><span style="color:navy">);
+      </span>read_until<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">, 99);
+      </span><span style="color:#8080ff">bet </span><span style="color:navy">= </span>atoi<span style="color:navy">(&amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">);
+      if ( </span><span style="color:#8080ff">bet </span><span style="color:navy">== -1 )
+        goto LABEL_74;
+      if ( </span><span style="color:#8080ff">bet &lt; </span><span style="color:navy">0 || </span><span style="color:#8080ff">bet &gt; </span>MAX_BET <span style="color:navy">)
+      {
+        </span>snprintf<span style="color:navy">(&amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">, 0x63u, &quot;</span><span style="color:green">Table limit is $%d.  Bet again.\n&quot;</span><span style="color:navy">, </span>MAX_BET<span style="color:navy">);
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">);
+      </span><span style="background:navy"></span><span style="color:navy">}
+      if ( !</span><span style="color:#8080ff">bet </span><span style="color:navy">)
+        </span>sendit<span style="color:navy">(
+          </span><span style="color:#8080ff">socket</span><span style="color:navy">,
+          &quot;</span><span style="color:green">Well, I suppose we can let a noob blackjack player learn the ropes without risking any money.  Don&#039;t tell my pit boss.\n&quot;</span><span style="color:navy">);
+      if ( </span><span style="color:#8080ff">bet &gt; </span>cash <span style="color:navy">)
+      {
+        </span>snprintf<span style="color:navy">(&amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">, 0x63u, &quot;</span><span style="color:green">No lines of credit in this casino.  Bet again.\n&quot;</span><span style="color:navy">, </span>MAX_BET<span style="color:navy">);
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">);
+        </span><span style="color:#8080ff">bet </span><span style="color:navy">= -1;
+      </span><span style="background:navy"></span><span style="color:navy">}
+    </span><span style="background:blue"></span><span style="color:navy">}
+    </span><span style="color:#8080ff">player_hand</span><span style="color:navy">[0] = </span>rand<span style="color:navy">() % 13 + 1;
+    </span>LOBYTE<span style="color:navy">(</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">) = </span>rand<span style="color:navy">() % 13 + 1;
+    </span><span style="color:#8080ff">player_hand</span><span style="color:navy">[1] = </span>rand<span style="color:navy">() % 13 + 1;
+    </span>BYTE1<span style="color:navy">(</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">) = </span>rand<span style="color:navy">() % 13 + 1;
+    </span><span style="color:#8080ff">player_hand_val </span><span style="color:navy">= </span>CalculateHandValue<span style="color:navy">(</span><span style="color:#8080ff">player_hand</span><span style="color:navy">);
+    </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">= </span>CalculateHandValue<span style="color:navy">(&amp;</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">);
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Dealer: &quot;</span><span style="color:navy">);
+    </span>PrintHand<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">, 1);
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">\n&quot;</span><span style="color:navy">);
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Player: &quot;</span><span style="color:navy">);
+    </span>PrintHand<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)</span><span style="color:#8080ff">player_hand</span><span style="color:navy">, 0);
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">\n&quot;</span><span style="color:navy">);
+    </span><span style="color:#8080ff">num_player_cards </span><span style="color:navy">= 2;
+    do
+    {
+      if ( </span><span style="color:#8080ff">num_player_cards &gt; </span><span style="color:navy">21 )
+        break;
+      </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Hit or Stand (H/S)? &quot;</span><span style="color:navy">);
+      </span>read_until<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">hit_stand_decision</span><span style="color:navy">, 99);
+      if ( </span><span style="color:#8080ff">hit_stand_decision </span><span style="color:navy">== 72 )           </span>// HIT
+      <span style="color:navy">{
+        </span><span style="color:#8080ff">player_hand</span><span style="color:navy">[</span><span style="color:#8080ff">num_player_cards</span><span style="color:navy">++] = </span>rand<span style="color:navy">() % 13 + 1;
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Player: &quot;</span><span style="color:navy">);
+        </span>PrintHand<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)</span><span style="color:#8080ff">player_hand</span><span style="color:navy">, 0);
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">\n&quot;</span><span style="color:navy">);
+      </span><span style="background:navy"></span><span style="color:navy">}
+      else
+      {
+        if ( </span><span style="color:#8080ff">hit_stand_decision </span><span style="color:navy">== 83 )
+          break;
+      </span><span style="background:navy"></span><span style="color:navy">}
+      </span><span style="color:#8080ff">player_hand_val </span><span style="color:navy">= </span>CalculateHandValue<span style="color:navy">(</span><span style="color:#8080ff">player_hand</span><span style="color:navy">);
+    </span><span style="background:navy"></span><span style="color:navy">}
+    while ( </span><span style="color:#8080ff">player_hand_val &lt;</span><span style="color:navy">= 21 );
+    </span><span style="color:#8080ff">num_dealer_cards </span><span style="color:navy">= 2;
+    while ( </span><span style="color:#8080ff">player_hand_val &lt;</span><span style="color:navy">= 21 &amp;&amp; </span><span style="color:#8080ff">num_dealer_cards &lt;</span><span style="color:navy">= 20 )
+    {
+      if ( </span><span style="color:#8080ff">dealer_hand_val &gt; </span><span style="color:navy">16 )
+      {
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Dealer stands\n&quot;</span><span style="color:navy">);
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Dealer: &quot;</span><span style="color:navy">);
+        </span>PrintHand<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">, 0);
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">\n&quot;</span><span style="color:navy">);
+        break;
+      </span><span style="background:navy"></span><span style="color:navy">}
+      </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Dealer hits\n&quot;</span><span style="color:navy">);
+      *((</span><span style="color:gray">_BYTE *</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">dealer_hand </span><span style="color:navy">+ </span><span style="color:#8080ff">num_dealer_cards</span><span style="color:navy">++) = </span>rand<span style="color:navy">() % 13 + 1;
+      </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">Dealer: &quot;</span><span style="color:navy">);
+      </span>PrintHand<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">, 0);
+      </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">\n&quot;</span><span style="color:navy">);
+      </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">= </span>CalculateHandValue<span style="color:navy">(&amp;</span><span style="color:#8080ff">dealer_hand</span><span style="color:navy">);
+      if ( </span><span style="color:#8080ff">dealer_hand_val &gt; </span><span style="color:navy">21 || </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">== 21 )
+        break;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    if ( </span><span style="color:#8080ff">player_hand_val </span><span style="color:navy">!= 21 || </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">== 21 )
+    {
+      if ( </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">!= 21 || </span><span style="color:#8080ff">player_hand_val </span><span style="color:navy">== 21 )
+      {
+        if ( </span><span style="color:#8080ff">player_hand_val &lt;</span><span style="color:navy">= 21 )
+        {
+          if ( </span><span style="color:#8080ff">dealer_hand_val &lt;</span><span style="color:navy">= 21 )
+          {
+            if ( </span><span style="color:#8080ff">player_hand_val &lt;</span><span style="color:navy">= </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">)
+            {
+              if ( </span><span style="color:#8080ff">player_hand_val </span><span style="color:navy">== </span><span style="color:#8080ff">dealer_hand_val </span><span style="color:navy">)
+              {
+                </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">It&#039;s a draw.\n\n&quot;</span><span style="color:navy">);
+              </span><span style="background:navy"></span><span style="color:navy">}
+              else
+              {
+                if ( </span><span style="color:#8080ff">player_hand_val &lt; dealer_hand_val </span><span style="color:navy">)
+                {
+                  </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">You lose!\n\n&quot;</span><span style="color:navy">);
+                  if ( </span><span style="color:#8080ff">bet </span><span style="color:navy">== 127 )
+                  {
+                    if ( </span>TipWaitress<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">) )
+                      ++</span><span style="color:#8080ff">bet</span><span style="color:navy">;
+                  </span><span style="background:#8080ff"></span><span style="color:navy">}
+                  </span>cash <span style="color:navy">-= </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+                  </span><span style="color:#8080ff">tmp </span><span style="color:navy">= </span>total_bets<span style="color:navy">;
+                  </span>winnings<span style="color:navy">[</span>total_bets<span style="color:navy">] = -(</span><span style="color:gray">_BYTE</span><span style="color:navy">)</span><span style="color:#8080ff">bet</span><span style="color:navy">;
+                  </span>total_bets <span style="color:navy">= </span><span style="color:#8080ff">tmp </span><span style="color:navy">+ 1;
+                </span><span style="background:navy"></span><span style="color:navy">}
+              </span><span style="background:blue"></span><span style="color:navy">}
+            </span><span style="background:blue"></span><span style="color:navy">}
+            else
+            {
+              </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">You win!\n\n&quot;</span><span style="color:navy">);
+              </span>cash <span style="color:navy">+= </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+              </span><span style="color:#8080ff">tmp2 </span><span style="color:navy">= </span>total_bets<span style="color:navy">;
+              </span>winnings<span style="color:navy">[</span>total_bets<span style="color:navy">] = </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+              </span>total_bets <span style="color:navy">= </span><span style="color:#8080ff">tmp2 </span><span style="color:navy">+ 1;
+            </span><span style="background:navy"></span><span style="color:navy">}
+          </span><span style="background:blue"></span><span style="color:navy">}
+          else
+          {
+            </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">You win!\n\n&quot;</span><span style="color:navy">);
+            </span>cash <span style="color:navy">+= </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+            </span><span style="color:#8080ff">v13 </span><span style="color:navy">= </span>total_bets<span style="color:navy">;
+            </span>winnings<span style="color:navy">[</span>total_bets<span style="color:navy">] = </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+            </span>total_bets <span style="color:navy">= </span><span style="color:#8080ff">v13 </span><span style="color:navy">+ 1;
+          </span><span style="background:navy"></span><span style="color:navy">}
+        </span><span style="background:blue"></span><span style="color:navy">}
+        else
+        {
+          </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">You lose!\n\n&quot;</span><span style="color:navy">);
+          if ( </span><span style="color:#8080ff">bet </span><span style="color:navy">== 127 )
+          {
+            if ( </span>TipWaitress<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">) )
+              ++</span><span style="color:#8080ff">bet</span><span style="color:navy">;
+          </span><span style="background:#8080ff"></span><span style="color:navy">}
+          </span>cash <span style="color:navy">-= </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+          </span><span style="color:#8080ff">v12 </span><span style="color:navy">= </span>total_bets<span style="color:navy">;
+          </span>winnings<span style="color:navy">[</span>total_bets<span style="color:navy">] = -(</span><span style="color:gray">_BYTE</span><span style="color:navy">)</span><span style="color:#8080ff">bet</span><span style="color:navy">;
+          </span>total_bets <span style="color:navy">= </span><span style="color:#8080ff">v12 </span><span style="color:navy">+ 1;
+        </span><span style="background:navy"></span><span style="color:navy">}
+      </span><span style="background:blue"></span><span style="color:navy">}
+      else
+      {
+        </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">You lose!\n&quot;</span><span style="color:navy">);
+        if ( </span><span style="color:#8080ff">bet </span><span style="color:navy">== 127 )
+        {
+          if ( </span>TipWaitress<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">) )
+            ++</span><span style="color:#8080ff">bet</span><span style="color:navy">;
+        </span><span style="background:#8080ff"></span><span style="color:navy">}
+        </span>cash <span style="color:navy">-= </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+        </span><span style="color:#8080ff">v11 </span><span style="color:navy">= </span>total_bets<span style="color:navy">;
+        </span>winnings<span style="color:navy">[</span>total_bets<span style="color:navy">] = -(</span><span style="color:gray">_BYTE</span><span style="color:navy">)</span><span style="color:#8080ff">bet</span><span style="color:navy">;
+        </span>total_bets <span style="color:navy">= </span><span style="color:#8080ff">v11 </span><span style="color:navy">+ 1;
+      </span><span style="background:navy"></span><span style="color:navy">}
+    </span><span style="background:blue"></span><span style="color:navy">}
+    else
+    {
+      </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">You win!\n\n&quot;</span><span style="color:navy">);
+      </span>cash <span style="color:navy">+= </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+      </span><span style="color:#8080ff">v10 </span><span style="color:navy">= </span>total_bets<span style="color:navy">;
+      </span>winnings<span style="color:navy">[</span>total_bets<span style="color:navy">] = </span><span style="color:#8080ff">bet</span><span style="color:navy">;
+      </span>total_bets <span style="color:navy">= </span><span style="color:#8080ff">v10 </span><span style="color:navy">+ 1;
+    </span><span style="background:navy"></span><span style="color:navy">}
+    if ( </span>total_bets <span style="color:navy">== 2048 )
+      break;
+    if ( </span>cash &lt;<span style="color:navy">= 0 )
+      goto LABEL_74;
+  </span><span style="background:navy"></span><span style="color:navy">}
+  </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">socket</span><span style="color:navy">, &quot;</span><span style="color:green">The pit boss is tired of you flirting with the waitresses...you&#039;re outta here\n&quot;</span><span style="color:navy">);
+LABEL_74:
+  </span><span style="color:#8080ff">result </span><span style="color:navy">= *</span>MK_FP<span style="color:navy">(</span>__GS__<span style="color:navy">, 20) ^ </span><span style="color:#8080ff">v25</span><span style="color:navy">;
+  if ( *</span>MK_FP<span style="color:navy">(</span>__GS__<span style="color:navy">, 20) != </span><span style="color:#8080ff">v25 </span><span style="color:navy">)
+    </span>__stack_chk_fail<span style="color:navy">();
+  return </span><span style="color:#8080ff">result</span><span style="color:navy">;
+
+</span></body></html>

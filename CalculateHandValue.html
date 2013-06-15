@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IDA - C:\Users\mononofu\Downloads\blackjack.idb (blackjack)</title>
+</head>
+<body bgcolor="white">
+<span style="white-space: pre; font-family: FixedSys; color: blue; background: white">
+
+<span style="background:#eeffff">  <span style="color:gray">signed int value</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+Ch] [bp-4h]@1                                                    </span></span>
+
+  <span style="color:#8080ff">num_cards </span><span style="color:navy">= 0;
+  </span><span style="color:#8080ff">value </span><span style="color:navy">= 0;
+  for ( </span><span style="color:#8080ff">i </span><span style="color:navy">= 0; </span><span style="color:#8080ff">i &lt;</span><span style="color:navy">= 20 &amp;&amp; *(</span><span style="color:gray">_BYTE *</span><span style="color:navy">)(</span><span style="color:#8080ff">cards </span><span style="color:navy">+ </span><span style="color:#8080ff">i</span><span style="color:navy">); ++</span><span style="color:#8080ff">i </span><span style="color:navy">)
+  {
+    switch ( *(</span><span style="color:gray">_BYTE *</span><span style="color:navy">)(</span><span style="color:#8080ff">cards </span><span style="color:navy">+ </span><span style="color:#8080ff">i</span><span style="color:navy">) )
+    {
+      case 1:
+        </span><span style="color:#8080ff">value </span><span style="color:navy">+= 11;
+        ++</span><span style="color:#8080ff">num_cards</span><span style="color:navy">;
+        break;
+      case 0xB:
+        </span><span style="color:#8080ff">value </span><span style="color:navy">+= 10;
+        break;
+      case 0xC:
+        </span><span style="color:#8080ff">value </span><span style="color:navy">+= 10;
+        break;
+      case 0xD:
+        </span><span style="color:#8080ff">value </span><span style="color:navy">+= 10;
+        break;
+      default:
+        </span><span style="color:#8080ff">value </span><span style="color:navy">+= *(</span><span style="color:gray">_BYTE *</span><span style="color:navy">)(</span><span style="color:#8080ff">cards </span><span style="color:navy">+ </span><span style="color:#8080ff">i</span><span style="color:navy">);
+        break;
+    </span><span style="background:navy"></span><span style="color:navy">}
+  </span><span style="background:blue"></span><span style="color:navy">}
+  if ( </span><span style="color:#8080ff">value &gt; </span><span style="color:navy">21 )
+  {
+    while ( 1 )
+    {
+      </span><span style="color:#8080ff">v2 </span><span style="color:navy">= </span><span style="color:#8080ff">num_cards</span><span style="color:navy">-- != 0;
+      if ( !</span><span style="color:#8080ff">v2 </span><span style="color:navy">)
+        break;
+      </span><span style="color:#8080ff">value </span><span style="color:navy">-= 10;
+      if ( </span><span style="color:#8080ff">value &lt;</span><span style="color:navy">= 20 )
+        return </span><span style="color:#8080ff">value</span><span style="color:navy">;
+    </span><span style="background:#8080ff"></span><span style="color:navy">}
+    </span><span style="color:#8080ff">result </span><span style="color:navy">= </span><span style="color:#8080ff">value</span><span style="color:navy">;
+  </span><span style="background:#8080ff"></span><span style="color:navy">}
+  else
+  {
+    </span><span style="color:#8080ff">result </span><span style="color:navy">= </span><span style="color:#8080ff">value</span><span style="color:navy">;
+  </span><span style="background:#8080ff"></span><span style="color:navy">}
+  return </span><span style="color:#8080ff">result</span><span style="color:navy">;
+</span><span style="background:#8080ff"></span><span style="color:navy">}
+</span></body></html>

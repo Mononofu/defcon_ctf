@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IDA - C:\Users\mononofu\Downloads\blackjack.idb (blackjack)</title>
+</head>
+<body bgcolor="white">
+<span style="white-space: pre; font-family: FixedSys; color: blue; background: white">
+
+<span style="color:gray">signed int __cdecl TipWaitress(int fd)
+</span><span style="color:navy">{
+</span><span style="background:#eeffff">  <span style="color:gray">int v1</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@1                                                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v2</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@1                                                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v3</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@3                                                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">signed int result</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@3                                                 </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v5</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">eax@4                                                            </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int tip_decision</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+18h] [bp-70h]@1                                    </span></span>
+<span style="background:#eeffff">  <span style="color:gray">int v7</span><span style="color:navy">; </span><span style="color:gray">// </span><span style="color:#8080ff">[sp+7Ch] [bp-Ch]@1                                               </span></span>
+
+  <span style="color:#8080ff">v7 </span><span style="color:navy">= *</span>MK_FP<span style="color:navy">(</span>__GS__<span style="color:navy">, 20);
+  </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, &quot;</span><span style="color:green">But it&#039;s not all bad.  The waitress just showed up with your &quot;</span><span style="color:navy">);
+  </span><span style="color:#8080ff">v1 </span><span style="color:navy">= </span>rand<span style="color:navy">();
+  </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, *(&amp;</span>drink1 <span style="color:navy">+ </span><span style="color:#8080ff">v1 </span><span style="color:navy">% 9));
+  </span><span style="color:#8080ff">v2 </span><span style="color:navy">= </span>rand<span style="color:navy">();
+  </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, *(&amp;</span>drink2 <span style="color:navy">+ </span><span style="color:#8080ff">v2 </span><span style="color:navy">% 12));
+  </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, &quot;</span><span style="color:green">Would you like to tip $1 (y/n)? &quot;</span><span style="color:navy">);
+  </span>read_until<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, (</span><span style="color:gray">int</span><span style="color:navy">)&amp;</span><span style="color:#8080ff">tip_decision</span><span style="color:navy">, 99);
+  if ( (</span><span style="color:gray">_BYTE</span><span style="color:navy">)</span><span style="color:#8080ff">tip_decision </span><span style="color:navy">!= 121 &amp;&amp; (</span><span style="color:gray">_BYTE</span><span style="color:navy">)</span><span style="color:#8080ff">tip_decision </span><span style="color:navy">!= 89 )
+  {
+    </span><span style="color:#8080ff">v5 </span><span style="color:navy">= </span>rand<span style="color:navy">();
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, *(&amp;</span>notips <span style="color:navy">+ </span><span style="color:#8080ff">v5 </span><span style="color:navy">% 5));
+    </span><span style="color:#8080ff">result </span><span style="color:navy">= 0;
+  </span><span style="background:navy"></span><span style="color:navy">}
+  else
+  {
+    </span><span style="color:#8080ff">v3 </span><span style="color:navy">= </span>rand<span style="color:navy">();
+    </span>sendit<span style="color:navy">(</span><span style="color:#8080ff">fd</span><span style="color:navy">, *(&amp;</span>tips <span style="color:navy">+ ((((</span><span style="color:gray">unsigned int</span><span style="color:navy">)</span><span style="color:#8080ff">v3 &gt;&gt; </span><span style="color:navy">61) + </span><span style="color:#8080ff">v3</span><span style="color:navy">) &amp; 3) - ((</span><span style="color:gray">unsigned int</span><span style="color:navy">)</span><span style="color:#8080ff">v3 &gt;&gt; </span><span style="color:navy">61)));
+    </span><span style="color:#8080ff">result </span><span style="color:navy">= 1;
+  </span><span style="background:navy"></span><span style="color:navy">}
+  if ( *</span>MK_FP<span style="color:navy">(</span>__GS__<span style="color:navy">, 20) != </span><span style="color:#8080ff">v7 </span><span style="color:navy">)
+    </span>__stack_chk_fail<span style="color:navy">();
+  return </span><span style="color:#8080ff">result</span><span style="color:navy">;
+</span><span style="background:#8080ff"></span><span style="color:navy">}
+</span></body></html>
