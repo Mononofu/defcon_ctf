@@ -12,12 +12,33 @@ def clean_cards(line):
 def decide(player_worth):
   if player_worth < 18:
     s.send("H\n")
+    player_hand.append(libc.rand() % 13 + 1)
+    print_hand("player", player_hand)
   else:
     s.send("S\n")
 
 
 def parse_cash(line):
   return int(line.split("$")[-1])
+
+
+def pretty_print_card(card):
+  if card == 1:
+    return "A"
+  elif card == 0xB:
+    return "J"
+  elif card == 0xC:
+    return "Q"
+  elif card == 0xD:
+    return "K"
+  else:
+    return str(card)
+
+
+def print_hand(name, hand):
+  print ("Predicted hand for %s: %s" %
+         (name, map(pretty_print_card, hand)))
+
 
 s = socket.socket(socket.AF_INET)
 s.connect(("blackjack.shallweplayaga.me", 6789))
@@ -32,10 +53,10 @@ bet = 1
 # ask for bet
 print s.recv(1024)
 
-player_hand = []
-dealer_hand = []
-
 while True:
+  player_hand = []
+  dealer_hand = []
+
   print "I have %d $" % cash
 
   #make bet
@@ -47,8 +68,8 @@ while True:
   player_hand.append(libc.rand() % 13 + 1)
   dealer_hand.append(libc.rand() % 13 + 1)
 
-  print "Predicted player hand: %s" % player_hand
-  print "Predicted dealer hand: %s" % dealer_hand
+  print_hand("player", player_hand)
+  print_hand("dealer", dealer_hand)
 
   # first round get values from dealer too
   cards = s.recv(1024) + s.recv(1024)
